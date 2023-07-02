@@ -1,0 +1,16 @@
+{
+  "name": "flask-practice",
+  "version": "1.0.0",
+  "description": "my Project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tailwindcss -i ./static/css/src/main.css -o",
+    "watch": "tailwindcss -i ./static/css/src/main.css -o ./static/css/dist/output.css --watch"
+  },
+  "author": "Eghosa Ordia",
+  "license": "ISC",
+  "devDependencies": {
+    "tailwindcss": "^3.3.2"
+  }
+}

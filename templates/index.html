@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+<!-- Head Tag -->
+{% block head %}
+<link href="https://fonts.googleapis.com/css2?family=Belanosima&display=swap" rel="stylesheet">
+<title>Wizzy, The weather App</title>
+{% endblock %}
+
+<!-- Body Tag -->
+{% block body %}
+ <nav class="py-10 shadow-md">
+     <div class="flex justify-center text-center gap-10 md:gap-20 flex-col md:flex-row">
+         <a class="logo my-auto text-4xl text-center">
+             <h1 class="flex justify-center">
+                 <span class="my-auto">Windy</span>
+                 <img src="../static/css/img/logo.png" width="40px" height="20px" class="">
+            </h1>
+         </a>
+         <form class="flex justify-center gap-5 my-auto" id="myForm" method="GET" autocomplete="off">
+             <input type="text" name="location"  placeholder="City, State, Country Code" class="py-2 px-5 border border-grey location">
+             <input type="submit" name="submit" value="Search" class="py-2 px-10 text-white text-1xl bg-sky-blue rounded-sm cursor-pointer">
+         </form>
+     </div>
+ </nav>
+ <section class="hero mt-20">
+     <div class="parent-div text-center">
+         <div class="weather-date text-4xl">
+             <h2>Today, <span class="day">{{today}}</span>-<span class="month">{{month_name}}</span> <span class="year"></span></h2>
+         </div>
+         <div class="weather-info flex justify-center gap-5 my-5">
+             {% if not data['icon'] %}
+                <img src="{{ icon }}" width="100px" height="100px">
+            {% else %}
+                <img src="https://openweathermap.org/img/wn/{{data['icon']}}.png" width="100px" height="100px">
+            {% endif %}
+                <span class="weather-desc my-auto text-3xl">{{ data['weather_desc'] }}</span>
+
+         </div>
+         <div class="weather-xtra grid grid-rows-2 grid-flow-col gap-4 mt-6">
+             <span class="shadow-md py-4 px-6 hover:bg-sky-blue hover:text-white rouded-sm text-lg cursor-pointer">Temp</span>
+             <span class="p-4 border border-grey rounded-sm"><span class="deg">{{data['temp']}}</span>°F</span>
+             <span class="shadow-md py-4 px-6 hover:bg-sky-blue hover:text-white rouded-sm text-lg cursor-pointer">Humidity</span>
+             <span class="p-4 border border-grey rounded-sm">{{data['humidity']}}%</span>
+             <span class="shadow-md py-4 px-6 hover:bg-sky-blue hover:text-white rounded-sm text-lg cursor-pointer">Wind Speed</span>
+             <span class="p-4 border border-grey rounded-sm">{{data['wind_speed']}}m/h</span>
+         </div>
+     </div>
+ </section>
+<div class="p-24"></div>
+ <footer class="text-center fixed bottom-0 py-4 w-full bg-sand-beige">
+     <h3 class="text-3xl m-4">API from OpenweatherMap</h3>
+     <p class="text-[18px]">Developed by
+         <a class="underline" target="_blank" href="https://www.twitter.com/EghosaOrdia/">
+            <span class="my-auto">Eghosa Ordia</span>
+             <i class="lab la-twitter my-auto text-sec-blue"></i>
+         </a>
+     </p>
+ </footer>
+
+<script src="../static/app.js"></script>
+{% endblock %}

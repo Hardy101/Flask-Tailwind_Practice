@@ -1,0 +1,19 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    transition: all 0.3s ease-in-out;
+}
+
+body{
+    font-family: 'Belanosima', sans-serif;
+    background-color: #FFF;
+}
+.hero{
+
+    display: grid;
+    place-items: center;
+}
+footer{
+}
