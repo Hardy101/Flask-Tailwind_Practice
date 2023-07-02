@@ -11,9 +11,6 @@ body{
     background-color: #FFF;
 }
 .hero{
-
     display: grid;
     place-items: center;
-}
-footer{
 }

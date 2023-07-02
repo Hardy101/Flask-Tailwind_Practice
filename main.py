@@ -5,19 +5,19 @@ from day_and_month import day_today, month_name
 app = Flask(__name__)
 
 
-# location = 'Benin, Edo, NGN'
-# api = API(query=location)
-# data = api.weather_data()
-# print(data)
 @app.route("/", methods=['GET'])
 def index():
-    location = request.args.get('location')
+    location = request.args.get('location')  # Value from the Input in form
+    date = {
+        "today": day_today,
+        'month_name': month_name
+    }
     if location:
         api = API(query=location)
         data = api.weather_data()
-        return render_template('index.html', data=data, today=day_today, month_name=month_name)
+        return render_template('index.html', data=data, date=date)
     else:
-        return render_template('index.html', data=None, icon='static/css/img/img_1.png', today=day_today, month_name=month_name)
+        return render_template('index.html', data=None, icon='static/css/img/img_1.png', date=date)
 
 
 if __name__ == '__main__':

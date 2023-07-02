@@ -1,28 +1,21 @@
 import requests
-
 GEO_ENDPOINT = 'http://api.openweathermap.org/geo/1.0/direct'
 OWM_ENDPOINT = 'https://api.openweathermap.org/data/2.5/weather'
 API_KEY = '7a956fa249de7c4633a84a4eeccac274'
-ICON_URL = 'https://openweathermap.org/img/wn/'
 
 
 class API:
     def __init__(self, query):
         self.query = query
-        # query = 'Benin City, Edo State, NGN'
-        # Parameters for Geo Location API
-        self.parameters_geo = {
+
+    def lat_lon(self):
+        parameters_geo = {
             'q': self.query,
             'appid': API_KEY
         }
-
-    def lat_lon(self):
-        response = requests.get(GEO_ENDPOINT, params=self.parameters_geo)
+        response = requests.get(GEO_ENDPOINT, params=parameters_geo)
         data = response.json()[0]
-        lat = data['lat']
-        lon = data['lon']
-        return lat, lon
-
+        return data['lat'], data['lon']
 
     def weather_data(self):
         # Parameters for OpenWeatherMap API
